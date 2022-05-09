@@ -138,6 +138,7 @@
         android:gravity="center"
         android:id="@+id/InputWord"
         android:hint="단어를 입력하세요"
+        android:singleLine="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
