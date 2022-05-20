@@ -32,17 +32,18 @@ class MainActivity : AppCompatActivity(), View.OnKeyListener, View.OnClickListen
 
     lateinit var toggle : ActionBarDrawerToggle
 
-    lateinit var layout5 : FrameLayout; lateinit var layout6 : FrameLayout; lateinit var layout7 : FrameLayout; lateinit var layout8 : FrameLayout
-    lateinit var layout9 : FrameLayout; lateinit var layout10 : FrameLayout; lateinit var layout11 : FrameLayout; lateinit var layout12 : FrameLayout
+    lateinit var layout1 : LinearLayout; lateinit var layout2 : LinearLayout; lateinit var layout3: LinearLayout; lateinit var layout4 : LinearLayout
+    lateinit var layout5 : LinearLayout; lateinit var layout6 : LinearLayout; lateinit var layout7 : LinearLayout; lateinit var layout8 : LinearLayout
+    lateinit var layout9 : LinearLayout; lateinit var layout10 : LinearLayout; lateinit var layout11 : LinearLayout; lateinit var layout12 : LinearLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        layout5 = findViewById(R.id.layout5); layout6 = findViewById(R.id.layout6); layout7 = findViewById(R.id.layout7);
-        layout8 = findViewById(R.id.layout8); layout9 = findViewById(R.id.layout9); layout10 = findViewById(R.id.layout10)
-        layout11 = findViewById(R.id.layout11); layout12 = findViewById(R.id.layout12)
+        layout1 = findViewById(R.id.layout1); layout2 = findViewById(R.id.layout2); layout3 = findViewById(R.id.layout3); layout4 = findViewById(R.id.layout4)
+        layout5 = findViewById(R.id.layout5); layout6 = findViewById(R.id.layout6); layout7 = findViewById(R.id.layout7); layout8 = findViewById(R.id.layout8)
+        layout9 = findViewById(R.id.layout9); layout10 = findViewById(R.id.layout10); layout11 = findViewById(R.id.layout11); layout12 = findViewById(R.id.layout12)
 
         //filter를 통하여 입력이 정답의 길이인 answer_length를 넘기지 못하게 조정한다.
         inputWord1 = findViewById(R.id.Input1); inputWord1.filters = arrayOf<InputFilter>(InputFilter.LengthFilter(answerLength))
@@ -90,7 +91,7 @@ class MainActivity : AppCompatActivity(), View.OnKeyListener, View.OnClickListen
                 answerLengthChange(inputWord1, word1); answerLengthChange(inputWord2, word2); answerLengthChange(inputWord3, word3)
                 answerLengthChange(inputWord4, word4); answerLengthChange(inputWord5, word5); answerLengthChange(inputWord6, word6)
                 answerLengthChange(inputWord7, word7); answerLengthChange(inputWord8, word8); answerLengthChange(inputWord9, word9)
-                answerLengthChange(inputWord10, word10)
+                answerLengthChange(inputWord10, word10); answerLengthChange(inputWord11, word11); answerLengthChange(inputWord11, word11)
                 Toast.makeText(applicationContext, "단어 길이 변경에 따라 문제를 초기화합니다.", Toast.LENGTH_SHORT).show()
                 //정답 새로 받아오기 TODO()
 
@@ -183,7 +184,7 @@ class MainActivity : AppCompatActivity(), View.OnKeyListener, View.OnClickListen
         tv.text="" //출력 값 초기화
     }
 
-    fun layoutVisibilityChange(lay: FrameLayout, value : Int){
+    fun layoutVisibilityChange(lay: LinearLayout, value : Int){
         lay.visibility = value
     }
 
@@ -191,7 +192,7 @@ class MainActivity : AppCompatActivity(), View.OnKeyListener, View.OnClickListen
         layoutVisibilityChange(layout5, View.GONE); layoutVisibilityChange(layout6, View.GONE); layoutVisibilityChange(layout7, View.GONE)
         layoutVisibilityChange(layout8, View.GONE); layoutVisibilityChange(layout9, View.GONE); layoutVisibilityChange(layout10, View.GONE)
         layoutVisibilityChange(layout11, View.GONE); layoutVisibilityChange(layout12, View.GONE)
-        //layout1.layoutParams.height = 300
+
         if(tryCount >= 5){ layoutVisibilityChange(layout5, View.VISIBLE) }
         if(tryCount >= 6){ layoutVisibilityChange(layout6, View.VISIBLE) }
         if(tryCount >= 7){ layoutVisibilityChange(layout7, View.VISIBLE) }
@@ -200,6 +201,7 @@ class MainActivity : AppCompatActivity(), View.OnKeyListener, View.OnClickListen
         if(tryCount >= 10){ layoutVisibilityChange(layout10, View.VISIBLE) }
         if(tryCount >= 11){ layoutVisibilityChange(layout11, View.VISIBLE) }
         if(tryCount >= 12){ layoutVisibilityChange(layout12, View.VISIBLE) }
+
     }
 
     fun correctAnswer(answer: String, str: String): SpannableStringBuilder { //입력과 정답을 비교하여 문자열을 색칠하는 함수
